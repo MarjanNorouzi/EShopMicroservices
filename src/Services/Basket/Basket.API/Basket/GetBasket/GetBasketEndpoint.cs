@@ -1,9 +1,10 @@
 ﻿namespace Basket.API.Basket.GetBasket;
 
-public record GetBasketRequest(string UserName);
+//public record GetBasketRequest(string UserName);
+
 public record GetBasketResponse(ShoppingCart Cart);
 
-internal class GetBasketEndpoint : ICarterModule
+public class GetBasketEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
@@ -16,6 +17,7 @@ internal class GetBasketEndpoint : ICarterModule
         .WithName("GetBasketByUserName")
         .Produces<GetBasketResponse>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status400BadRequest)
+        .ProducesProblem(StatusCodes.Status404NotFound)
         .WithSummary("Get Basket By UserName")
         .WithDescription("Get Basket By UserName");
     }
