@@ -22,17 +22,18 @@ internal class StoreBasketCommandHandler(
 {
     public async Task<StoreBasketResult> Handle(StoreBasketCommand command, CancellationToken cancellationToken)
     {
-        await DeductDiscount(discountProto, command, cancellationToken);
+        await DeductDiscount(command.Cart, cancellationToken);
 
-        // TODO : comminucate with discount grpc
+        // store basket to db using Marten and Redis
         await repository.StoreBasket(command.Cart, cancellationToken);
 
         return new StoreBasketResult(command.Cart.UserName);
     }
 
-    private static async Task DeductDiscount(DiscountProtoService.DiscountProtoServiceClient discountProto, StoreBasketCommand command, CancellationToken cancellationToken)
+    private async Task DeductDiscount(ShoppingCart cart, CancellationToken cancellationToken)
     {
-        foreach (var item in command.Cart.Items)
+        // Comminucate with gRPC and calculate latest price of products
+        foreach (var item in cart.Items)
         {
             var coupon = await discountProto.GetDiscountAsync(new GetDiscountRequest { ProductName = item.ProductName }, cancellationToken: cancellationToken);
             item.Price -= coupon.Amount;
