@@ -93,9 +93,10 @@ services:
     container_name: orderdb
     environment:
       - ACCEOT_EULA=Y
-      - SA_PASSWORD=123
-      # - SA_PASSWORD=302010
+      #- SA_PASSWORD=123
+      - MSSQL_SA_PASSWORD=C@mplex302010
     restart: always
     ports:
       - "1433:1433"
+      # - "45986:1433"
 
