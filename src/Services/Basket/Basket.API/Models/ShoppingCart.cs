@@ -14,6 +14,6 @@ public class ShoppingCart
     // Required for Mapping
     public ShoppingCart()
     {
-        
+
     }
 }

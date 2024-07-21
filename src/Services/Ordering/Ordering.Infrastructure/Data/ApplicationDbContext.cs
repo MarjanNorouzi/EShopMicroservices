@@ -1,8 +1,6 @@
-﻿using System.Reflection;
+﻿namespace Ordering.Infrastructure.Data;
 
-namespace Ordering.Infrastructure.Data;
-
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     { }
@@ -15,7 +13,7 @@ public class ApplicationDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        
+
         base.OnModelCreating(builder);
     }
 }
