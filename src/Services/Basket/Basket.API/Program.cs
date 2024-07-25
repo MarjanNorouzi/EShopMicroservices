@@ -1,3 +1,5 @@
+using BuildingBlocks.Messaging.MassTransit;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
@@ -47,6 +49,12 @@ builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
     };
     return handler;
 });
+
+#endregion
+
+#region " Asyn Communication Services "
+
+builder.Services.AddMessageBroker(builder.Configuration);
 
 #endregion
 
