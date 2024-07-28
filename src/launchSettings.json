@@ -7,10 +7,11 @@
         "catalog.api": "DoNotStart",
         "basket.api": "DoNotStart",
         "discount.grpc": "DoNotStart",
-        "basketdb": "DoNotStart",
+        "basketdb": "StartWithoutDebugging",
         "catalogdb": "DoNotStart",
         "distributedcache": "DoNotStart",
-        "orderdb": "StartWithoutDebugging"
+        "orderdb": "StartWithoutDebugging",
+        "yarpapigateway": "StartDebugging"
       }
     }
   }
