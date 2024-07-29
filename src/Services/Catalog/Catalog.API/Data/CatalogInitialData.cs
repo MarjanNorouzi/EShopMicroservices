@@ -5,7 +5,7 @@ public class CatalogInitialData : IInitialData
     public async Task Populate(IDocumentStore store, CancellationToken cancellationToken)
     {
         using var session = store.LightweightSession();
-
+        
         if (await session.Query<Product>().AnyAsync(cancellationToken))
             return;
 

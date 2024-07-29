@@ -43,16 +43,23 @@ services:
     image: rabbitmq:3-management
 
 
-  yarpapigateway:
-    image: ${DOCKER_REGISTRY-}yarpapigateway
+  # yarpapigateway:
+  #   image: ${DOCKER_REGISTRY-}yarpapigateway
+  #   build:
+  #     context: .
+  #     dockerfile: ApiGateways/YarpApiGateway/Dockerfile
+
+  ordering.api:
+    image: ${DOCKER_REGISTRY-}orderingapi
     build:
       context: .
-      dockerfile: ApiGateways/YarpApiGateway/Dockerfile
+      dockerfile: Services/Ordering/Ordering.API/Dockerfile
 
 volumes:
   postgres_catalog:
   postgres_basket:
   sql_data:
  
+
 
 

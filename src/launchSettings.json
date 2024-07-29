@@ -5,13 +5,14 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "catalog.api": "DoNotStart",
-        "basket.api": "DoNotStart",
+        "basket.api": "StartWithoutDebugging",
         "discount.grpc": "DoNotStart",
         "basketdb": "StartWithoutDebugging",
         "catalogdb": "DoNotStart",
         "distributedcache": "DoNotStart",
         "orderdb": "StartWithoutDebugging",
-        "yarpapigateway": "StartDebugging"
+        "messagebroker": "StartWithoutDebugging",
+        "ordering.api": "StartWithoutDebugging"
       }
     }
   }
