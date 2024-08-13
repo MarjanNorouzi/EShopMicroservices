@@ -2,9 +2,6 @@
 
 namespace Ordering.Application.Exceptions;
 
-public class OrderNotFoundException : NotFoundException
+public class OrderNotFoundException(Guid id) : NotFoundException("Order", id)
 {
-    public OrderNotFoundException(Guid id) : base("Order", id)
-    {
-    }
 }

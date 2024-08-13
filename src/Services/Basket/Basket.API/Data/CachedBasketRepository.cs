@@ -1,8 +1,6 @@
 ﻿namespace Basket.API.Data;
 
-public class CachedBasketRepository(
-    IBasketRepository repository,
-    IDistributedCache cache) : IBasketRepository
+public class CachedBasketRepository(IBasketRepository repository, IDistributedCache cache) : IBasketRepository
 {
     public async Task<ShoppingCart> GetBasket(string userName, CancellationToken cancellationToken = default)
     {

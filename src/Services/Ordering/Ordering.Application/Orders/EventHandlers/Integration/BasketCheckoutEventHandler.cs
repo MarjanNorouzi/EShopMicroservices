@@ -16,7 +16,7 @@ public class BasketCheckoutEventHandler
         var command = MapToCreateOrderCommand(context.Message);
         await sender.Send(command);
 
-        var order = Order.Create(
+       Order.Create(
             OrderId.Of(context.Message.Id),
             CustomerId.Of(context.Message.CutomerId),
             OrderName.Of(""),
@@ -24,9 +24,6 @@ public class BasketCheckoutEventHandler
             Address.Of(context.Message.FirstName, context.Message.LastName, context.Message.EmailAddress, context.Message.AddressLine, context.Message.Country, context.Message.State, context.Message.ZipCode),
             Payment.Of(context.Message.CardName, context.Message.CardNumber, context.Message.Expiration, context.Message.CVV, context.Message.PaymentMethod));
         context.Message.Adapt<Order>();
-
-
-        throw new NotImplementedException();
     }
 
     private CreateOrderCommand MapToCreateOrderCommand(BasketCheckoutEvent message)

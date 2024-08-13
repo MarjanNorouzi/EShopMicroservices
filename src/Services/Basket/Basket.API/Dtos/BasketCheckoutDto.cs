@@ -6,7 +6,7 @@ public class BasketCheckoutDto
     public Guid CutomerId { get; set; } = default!;
     public decimal TotalPrice { get; set; } = default!;
 
-    //shipping and billing Addresses
+    #region 'Shipping And Billing Addresses'
     public string FirstName { get; } = default!;
     public string LastName { get; } = default!;
     public string EmailAddress { get; } = default!;
@@ -14,11 +14,13 @@ public class BasketCheckoutDto
     public string Country { get; } = default!;
     public string State { get; } = default!;
     public string ZipCode { get; } = default!;
+    #endregion
 
-    // payment
+    #region 'Payment'
     public string CardName { get; } = default!;
     public string CardNumber { get; } = default!;
     public string Expiration { get; } = default!;
     public string CVV { get; } = default!;
     public int PaymentMethod { get; } = default!;
+    #endregion
 }
